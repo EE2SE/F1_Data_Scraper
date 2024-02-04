@@ -32,7 +32,7 @@ features_df = pd.DataFrame(columns=["raceId", "driverId", "circuitId",
 
 def run_main():
     global features_df
-    drivers_df = pd.read_csv("kaggle F1/drivers.csv")
+    standings_df = pd.read_csv("kaggle F1/driver_standings.csv")
     results_df = pd.read_csv("kaggle F1/results.csv")
     races_df = pd.read_csv("kaggle F1/races.csv")
     qualifying_df = pd.read_csv("kaggle F1/qualifying.csv")
@@ -111,6 +111,17 @@ def run_main():
                     else:
                         finish = row_res["position"]
 
+                    # find previous raceId and find driver standing
+                    current_round = races_df[races_df["raceId"] == row_races["raceId"]]["round"].iloc[0]
+                    if current_round == 1:
+                        general_position = 25
+                    else:
+                        previousRaceId = races_df[(races_df["round"] == current_round - 1) & (races_df["year"] == year)]["raceId"].iloc[0]
+                        try:
+                            general_position = standings_df[(standings_df["raceId"] == previousRaceId) & (standings_df["driverId"] == row_res["driverId"])]["position"].iloc[0]
+                        except IndexError:
+                            general_position = 25
+
                     entry = {
                         "raceId": row_races["raceId"],
                         "driverId": row_res["driverId"],
@@ -127,7 +138,7 @@ def run_main():
                         "resultN3": result_n3,
                         "weather": 0,
                         "circuitType": 0,
-                        "generalClassification": 0
+                        "generalClassification": general_position
                     }
 
                     entry_df = pd.DataFrame([entry])
