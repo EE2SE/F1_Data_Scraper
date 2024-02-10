@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-
+import numpy as np
 # sort data into input features: for every race
 
 #   driverID
@@ -186,4 +186,14 @@ def run_main():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     run_main()
-    print(features_df.head())
+
+    msk = np.random.rand(len(features_df)) < 0.8
+    train = features_df[msk]
+    train_targets = train["finish"]
+    train = train.drop('finish',axis=1)
+    test = features_df[~msk]
+    test_targets = test["finish"]
+    test = test.drop('finish', axis=1)
+
+
+
