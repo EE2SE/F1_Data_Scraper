@@ -29,6 +29,7 @@ features_df = pd.DataFrame(columns=["raceId", "driverId", "driverName",
                                     "weather", "circuitType",
                                     "generalClassification"])
 
+
 def run_main():
     global features_df
     standings_df = pd.read_csv("kaggle F1/driver_standings.csv")
@@ -53,11 +54,11 @@ def run_main():
                     # we also need quali times
                     try:
                         q1_time = qualifying_df[(qualifying_df.raceId == row_races["raceId"]) & (
-                                    qualifying_df.driverId == row_res["driverId"])]["q1"].iloc[0]
+                                qualifying_df.driverId == row_res["driverId"])]["q1"].iloc[0]
                         q2_time = qualifying_df[(qualifying_df.raceId == row_races["raceId"]) & (
-                                    qualifying_df.driverId == row_res["driverId"])]["q2"].iloc[0]
+                                qualifying_df.driverId == row_res["driverId"])]["q2"].iloc[0]
                         q3_time = qualifying_df[(qualifying_df.raceId == row_races["raceId"]) & (
-                                    qualifying_df.driverId == row_res["driverId"])]["q3"].iloc[0]
+                                qualifying_df.driverId == row_res["driverId"])]["q3"].iloc[0]
                     except IndexError:
                         q1_time = "\\N"
                         q2_time = "\\N"
@@ -117,9 +118,12 @@ def run_main():
                     if current_round == 1:
                         general_position = 25
                     else:
-                        previousRaceId = races_df[(races_df["round"] == current_round - 1) & (races_df["year"] == year)]["raceId"].iloc[0]
+                        previousRaceId = \
+                        races_df[(races_df["round"] == current_round - 1) & (races_df["year"] == year)]["raceId"].iloc[
+                            0]
                         try:
-                            general_position = standings_df[(standings_df["raceId"] == previousRaceId) & (standings_df["driverId"] == row_res["driverId"])]["position"].iloc[0]
+                            general_position = standings_df[(standings_df["raceId"] == previousRaceId) & (
+                                        standings_df["driverId"] == row_res["driverId"])]["position"].iloc[0]
                         except IndexError:
                             general_position = 25
 
@@ -129,7 +133,9 @@ def run_main():
                         "driverName": drivers_df[drivers_df["driverId"] == row_res["driverId"]]["driverRef"].iloc[0],
                         "circuitId": row_races["circuitId"],
                         "constructorId": row_res["constructorId"],
-                        "constructor": constructors_df[constructors_df["constructorId"] == row_res["constructorId"]]["name"].iloc[0],
+                        "constructor":
+                            constructors_df[constructors_df["constructorId"] == row_res["constructorId"]]["name"].iloc[
+                                0],
                         "year": year,
                         "grid": row_res["grid"],
                         "finish": finish,
@@ -149,15 +155,14 @@ def run_main():
 
     # represent quali times as difference to the best time
     for race in set(features_df.raceId):
-
         q1_min = features_df[(features_df["raceId"] == race) & (features_df["q1time"] != "\\N")]["q1time"].min()
-        features_df.loc[(features_df["raceId"] == race) & (features_df["q1time"] != "\\N"),"q1time"] -= q1_min
+        features_df.loc[(features_df["raceId"] == race) & (features_df["q1time"] != "\\N"), "q1time"] -= q1_min
 
         q2_min = features_df[(features_df["raceId"] == race) & (features_df["q2time"] != "\\N")]["q2time"].min()
-        features_df.loc[(features_df["raceId"] == race) & (features_df["q2time"] != "\\N"),"q2time"] -= q2_min
+        features_df.loc[(features_df["raceId"] == race) & (features_df["q2time"] != "\\N"), "q2time"] -= q2_min
 
         q3_min = features_df[(features_df["raceId"] == race) & (features_df["q3time"] != "\\N")]["q3time"].min()
-        features_df.loc[(features_df["raceId"] == race) & (features_df["q3time"] != "\\N"),"q3time"] -= q3_min
+        features_df.loc[(features_df["raceId"] == race) & (features_df["q3time"] != "\\N"), "q3time"] -= q3_min
 
     features_df.loc[(features_df["q1time"] == "\\N"), "q1time"] = 15
     features_df.loc[(features_df["q2time"] == "\\N"), "q2time"] = 15
@@ -173,7 +178,10 @@ def run_main():
     features_df = pd.concat([features_df, one_hot_cars], axis=1)
 
     # drop unnecessary columns
-    features_df = features_df.drop(["raceId","driverId","driverName","circuitId","constructorId","constructor","weather","circuitType"], axis=1)
+    features_df = features_df.drop(
+        ["raceId", "driverId", "driverName", "circuitId", "constructorId", "constructor", "weather", "circuitType"],
+        axis=1)
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
