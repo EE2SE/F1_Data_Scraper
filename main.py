@@ -21,14 +21,13 @@ from datetime import datetime
 #   fp3 time/position
 #   upgrades brought to the race?
 
-features_df = pd.DataFrame(columns=["raceId", "driverId", "circuitId",
-                                    "constructorId", "year", "grid",
-                                    "finish",
+features_df = pd.DataFrame(columns=["raceId", "driverId", "driverName",
+                                    "circuitId", "constructorId", "constructor",
+                                    "year", "grid", "finish",
                                     "q1time", "q2time", "q3time",
                                     "resultN1", "resultN2", "resultN3",
                                     "weather", "circuitType",
                                     "generalClassification"])
-
 
 def run_main():
     global features_df
@@ -36,6 +35,8 @@ def run_main():
     results_df = pd.read_csv("kaggle F1/results.csv")
     races_df = pd.read_csv("kaggle F1/races.csv")
     qualifying_df = pd.read_csv("kaggle F1/qualifying.csv")
+    drivers_df = pd.read_csv("kaggle F1/drivers.csv")
+    constructors_df = pd.read_csv("kaggle F1/constructors.csv")
 
     # populate the dataset with race results in those years
     for year in range(2011, 2024):
@@ -125,8 +126,10 @@ def run_main():
                     entry = {
                         "raceId": row_races["raceId"],
                         "driverId": row_res["driverId"],
+                        "driverName": drivers_df[drivers_df["driverId"] == row_res["driverId"]]["driverRef"].iloc[0],
                         "circuitId": row_races["circuitId"],
                         "constructorId": row_res["constructorId"],
+                        "constructor": constructors_df[constructors_df["constructorId"] == row_res["constructorId"]]["name"].iloc[0],
                         "year": year,
                         "grid": row_res["grid"],
                         "finish": finish,
@@ -159,6 +162,18 @@ def run_main():
     features_df.loc[(features_df["q1time"] == "\\N"), "q1time"] = 15
     features_df.loc[(features_df["q2time"] == "\\N"), "q2time"] = 15
     features_df.loc[(features_df["q3time"] == "\\N"), "q3time"] = 15
+
+    # convert categorical data into one-hot encoding
+    one_hot_drivers = pd.get_dummies(features_df['driverName'])
+    one_hot_circuit = pd.get_dummies(features_df['circuitId'])
+    one_hot_cars = pd.get_dummies(features_df['constructor'])
+
+    features_df = pd.concat([features_df, one_hot_drivers], axis=1)
+    features_df = pd.concat([features_df, one_hot_circuit], axis=1)
+    features_df = pd.concat([features_df, one_hot_cars], axis=1)
+
+    # drop unnecessary columns
+    features_df = features_df.drop(["raceId","driverId","driverName","circuitId","constructorId","constructor","weather","circuitType"], axis=1)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
