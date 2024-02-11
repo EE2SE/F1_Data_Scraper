@@ -4,6 +4,7 @@ import torch.optim as optim
 import pandas as pd
 from torch.utils.data import TensorDataset, DataLoader
 
+torch.autograd.set_detect_anomaly(True)
 
 class SimpleRNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
@@ -27,22 +28,27 @@ class SimpleRNN(nn.Module):
 torch.manual_seed(42)
 
 # Define the input size, hidden size, and output size
-input_size = 139  # Number of features in your input data
+input_size = 138  # Number of features in your input data
 hidden_size = 64  # You can adjust this based on your problem
-output_size = 25  # Output size depends on your task (regression, classification, etc.)
+output_size = 1  # Output size depends on your task (regression, classification, etc.)
 
 # Create an instance of the SimpleRNN model
 model = SimpleRNN(input_size, hidden_size, output_size)
 
 # Define the loss function and optimizer
-criterion = nn.MSELoss()
+criterion = nn.NLLLoss()
+learning_rate = 0.005
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Load CSV data
 train_data = pd.read_csv("train.csv")
+train_data = train_data.drop('Unnamed: 0',axis=1)
 train_targets = pd.read_csv("train_targets.csv")
+train_targets = train_targets.drop('Unnamed: 0',axis=1)
 test_data = pd.read_csv("test.csv")
+test_data = test_data.drop('Unnamed: 0',axis=1)
 test_targets = pd.read_csv("test_targets.csv")
+test_targets = test_targets.drop('Unnamed: 0',axis=1)
 
 # convert to tensors
 train_tensor = torch.tensor(train_data.values, dtype=torch.float32)
@@ -63,8 +69,9 @@ num_epochs = 100
 
 # Training loop
 for epoch in range(num_epochs):
+
     # Initialize the hidden state for each epoch
-    hidden = torch.zeros(1, hidden_size)
+    hidden = model.initHidden()
 
     # Iterate over the training data
     for input_seq_batch, target_batch in train_data_loader:
@@ -81,7 +88,9 @@ for epoch in range(num_epochs):
         loss.backward()
 
         # Update the weights
-        optimizer.step()
+        # Add parameters' gradients to their values, multiplied by learning rate
+        for p in model.parameters():
+            p.data.add_(p.grad.data, alpha=-learning_rate)
 
     # Print the loss for each epoch
     print(f'Epoch [{epoch + 1}/{num_epochs}], Loss: {loss.item():.4f}')
