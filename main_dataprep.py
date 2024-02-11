@@ -169,9 +169,9 @@ def run_main():
     features_df.loc[(features_df["q3time"] == "\\N"), "q3time"] = 15
 
     # convert categorical data into one-hot encoding
-    one_hot_drivers = pd.get_dummies(features_df['driverName'])
-    one_hot_circuit = pd.get_dummies(features_df['circuitId'])
-    one_hot_cars = pd.get_dummies(features_df['constructor'])
+    one_hot_drivers = pd.get_dummies(features_df['driverName'],dtype='int')
+    one_hot_circuit = pd.get_dummies(features_df['circuitId'],dtype='int')
+    one_hot_cars = pd.get_dummies(features_df['constructor'],dtype='int')
 
     features_df = pd.concat([features_df, one_hot_drivers], axis=1)
     features_df = pd.concat([features_df, one_hot_circuit], axis=1)
