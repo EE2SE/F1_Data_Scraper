@@ -182,6 +182,7 @@ def run_main():
         ["raceId", "driverId", "driverName", "circuitId", "constructorId", "constructor", "weather", "circuitType"],
         axis=1)
 
+    features_df["year"] = (features_df["year"] - features_df["year"].min()) / (features_df["year"].max() - features_df["year"].min())
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -194,6 +195,11 @@ if __name__ == '__main__':
     test = features_df[~msk]
     test_targets = test["finish"]
     test = test.drop('finish', axis=1)
+
+    train_targets.to_csv('train_targets.csv')
+    train.to_csv('train.csv')
+    test.to_csv('test.csv')
+    test_targets.to_csv('test_targets.csv')
 
 
 
