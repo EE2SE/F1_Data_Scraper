@@ -30,13 +30,13 @@ torch.manual_seed(42)
 # Define the input size, hidden size, and output size
 input_size = 138  # Number of features in your input data
 hidden_size = 64  # You can adjust this based on your problem
-output_size = 1  # Output size depends on your task (regression, classification, etc.)
+output_size = 25  # Output size depends on your task (regression, classification, etc.)
 
 # Create an instance of the SimpleRNN model
 model = SimpleRNN(input_size, hidden_size, output_size)
 
 # Define the loss function and optimizer
-criterion = nn.NLLLoss()
+criterion = nn.CrossEntropyLoss()
 learning_rate = 0.005
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
@@ -44,19 +44,21 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 train_data = pd.read_csv("train.csv")
 train_data = train_data.drop('Unnamed: 0',axis=1)
 train_targets = pd.read_csv("train_targets.csv")
+train_targets = train_targets - 1
 train_targets = train_targets.drop('Unnamed: 0',axis=1)
 test_data = pd.read_csv("test.csv")
 test_data = test_data.drop('Unnamed: 0',axis=1)
 test_targets = pd.read_csv("test_targets.csv")
+test_targets = test_targets - 1
 test_targets = test_targets.drop('Unnamed: 0',axis=1)
 
 # convert to tensors
 train_tensor = torch.tensor(train_data.values, dtype=torch.float32)
-train_target_tensor = torch.tensor(train_targets.values, dtype=torch.float32)
+train_target_tensor = torch.tensor(train_targets.values, dtype=torch.long)
 train_dataset = TensorDataset(train_tensor, train_target_tensor)
 
 test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
-test_target_tensor = torch.tensor(test_targets.values, dtype=torch.float32)
+test_target_tensor = torch.tensor(test_targets.values, dtype=torch.long)
 test_dataset = TensorDataset(test_tensor, test_target_tensor)
 
 # Assuming you have a DataLoader for your training data
@@ -66,26 +68,30 @@ train_data_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=Tru
 
 # Number of training epochs
 num_epochs = 100
+i = 0
+tot = len(train_targets)
 
 # Training loop
 for epoch in range(num_epochs):
 
     # Initialize the hidden state for each epoch
-    hidden = model.initHidden()
+    hid = model.initHidden()
 
     # Iterate over the training data
     for input_seq_batch, target_batch in train_data_loader:
+        i = i+1
+        print(i/tot)
         # Zero the gradients
         optimizer.zero_grad()
 
         # Forward pass
-        output, hidden = model(input_seq_batch, hidden)
+        output, hid = model(input_seq_batch, hid)
 
         # Compute the loss
-        loss = criterion(output, target_batch.float())  # Assuming your target is a tensor of floats
+        loss = criterion(output.squeeze(), target_batch.squeeze())  # Assuming your target is a tensor of floats
 
         # Backward pass
-        loss.backward()
+        loss.backward(retain_graph=True)
 
         # Update the weights
         # Add parameters' gradients to their values, multiplied by learning rate
