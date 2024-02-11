@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.optim as optim
 import pandas as pd
 from torch.utils.data import TensorDataset, DataLoader
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 torch.autograd.set_detect_anomaly(True)
 
@@ -28,7 +30,7 @@ class SimpleRNN(nn.Module):
 torch.manual_seed(42)
 
 # Define the input size, hidden size, and output size
-input_size = 138  # Number of features in your input data
+input_size = 319  # Number of features in your input data
 hidden_size = 64  # You can adjust this based on your problem
 output_size = 25  # Output size depends on your task (regression, classification, etc.)
 
@@ -36,9 +38,8 @@ output_size = 25  # Output size depends on your task (regression, classification
 model = SimpleRNN(input_size, hidden_size, output_size)
 
 # Define the loss function and optimizer
-criterion = nn.CrossEntropyLoss()
-learning_rate = 0.005
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.NLLLoss()
+learning_rate = 1e-6
 
 # Load CSV data
 train_data = pd.read_csv("train.csv")
@@ -68,21 +69,26 @@ train_data_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=Tru
 
 # Number of training epochs
 num_epochs = 100
-i = 0
-tot = len(train_targets)
+
+loss_vals = list()
 
 # Training loop
 for epoch in range(num_epochs):
 
     # Initialize the hidden state for each epoch
-    hid = model.initHidden()
 
+    last_percent = 0
+    i = 0
     # Iterate over the training data
     for input_seq_batch, target_batch in train_data_loader:
-        i = i+1
-        print(i/tot)
+        hid = model.initHidden()
+        # i = i + 1
+        # if 100*i/tot > last_percent + print_every_percent:
+        #     print(last_percent + print_every_percent)
+        #     last_percent = last_percent + print_every_percent
+
         # Zero the gradients
-        optimizer.zero_grad()
+        model.zero_grad()
 
         # Forward pass
         output, hid = model(input_seq_batch, hid)
@@ -100,5 +106,9 @@ for epoch in range(num_epochs):
 
     # Print the loss for each epoch
     print(f'Epoch [{epoch + 1}/{num_epochs}], Loss: {loss.item():.4f}')
+    loss_vals.append(loss.item())
+
+plt.figure()
+plt.plot(loss_vals)
 
 # After training, you can use the trained model for predictions

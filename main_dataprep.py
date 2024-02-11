@@ -40,7 +40,7 @@ def run_main():
     constructors_df = pd.read_csv("kaggle F1/constructors.csv")
 
     # populate the dataset with race results in those years
-    for year in range(2011, 2024):
+    for year in range(1990, 2024):
 
         # here we grab an ID of a race from a particular year
         for index_races, row_races in races_df[races_df.year == year].iterrows():
@@ -182,7 +182,10 @@ def run_main():
         ["raceId", "driverId", "driverName", "circuitId", "constructorId", "constructor", "weather", "circuitType"],
         axis=1)
 
-    features_df["year"] = (features_df["year"] - features_df["year"].min()) / (features_df["year"].max() - features_df["year"].min())
+
+    for col in ["year","grid","q1time","q2time","q3time","resultN1","resultN2","resultN3","generalClassification"] :
+        features_df = features_df.astype({col: 'int'})
+        features_df[col] = (features_df[col] - features_df[col].min()) / (features_df[col].max() - features_df[col].min())
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
