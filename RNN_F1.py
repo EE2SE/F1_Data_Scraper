@@ -39,7 +39,7 @@ model = SimpleRNN(input_size, hidden_size, output_size)
 
 # Define the loss function and optimizer
 criterion = nn.NLLLoss()
-learning_rate = 1e-6
+learning_rate = 1e-7
 
 # Load CSV data
 train_data = pd.read_csv("train.csv")
@@ -68,7 +68,7 @@ batch_size = 1
 train_data_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
 # Number of training epochs
-num_epochs = 100
+num_epochs = 10
 
 loss_vals = list()
 
