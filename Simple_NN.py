@@ -119,8 +119,8 @@ if __name__ == '__main__':
     test_data = np.array(test_data)
     test_targets_onehot = encodeClassLabels(test_targets)
 
-    net = SimpleNN(train_data.shape[1], 32, train_targets.max() + 1, train_data.shape[0])
-    net.train(train_data.T, train_targets, 100000)
+    net = SimpleNN(train_data.shape[1], 1024, train_targets.max() + 1, train_data.shape[0])
+    net.train(train_data.T, train_targets, 1000)
 
     net.test(test_data.T,test_targets)
 
