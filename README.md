@@ -32,4 +32,4 @@ This problem, while it will involve learning a bunch of new skills, will follow 
     - **Milestone for Analyse Stage**: Setup database (will require understanding the best solution to this, whether it is SQLite or PostgreSQL or any other)
     - **Milestone for Analyse Stage**: Clean and complete dataset
     - **Milestone for Analyse Stage**: EDA report highlighting key avenues of solving the problem
-
+    - **Milestone for Construct Stage**: Good analysis of a few models along with results analysis from those ML models. This project is for me, need not be efficient in execution. 
