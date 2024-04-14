@@ -7,10 +7,10 @@ import numpy as np
 import pandas as pd
 
 device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
-hidden_size = 10024
-learning_rate = 100
+hidden_size = 10000
+learning_rate = 1
 batch_size = 64
-num_epochs = 100
+num_epochs = 4000
 
 class MyNeuralNet(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
@@ -19,6 +19,10 @@ class MyNeuralNet(nn.Module):
         self.hidden1_post = nn.ReLU()
         self.hidden2_pre = nn.Linear(hidden_size,hidden_size)
         self.hidden2_post = nn.ReLU()
+        self.hidden3_pre = nn.Linear(hidden_size,hidden_size)
+        self.hidden3_post = nn.ReLU()
+        self.hidden4_pre = nn.Linear(hidden_size,hidden_size)
+        self.hidden4_post = nn.ReLU()
         self.output_pre = nn.Linear(hidden_size,output_size)
         self.output_post = nn.Softmax()
 
@@ -27,6 +31,10 @@ class MyNeuralNet(nn.Module):
         out = self.hidden1_post(out)
         out = self.hidden2_pre(out)
         out = self.hidden2_post(out)
+        out = self.hidden3_pre(out)
+        out = self.hidden3_post(out)
+        out = self.hidden4_pre(out)
+        out = self.hidden4_post(out)
         out = self.output_pre(out)
         out = self.output_post(out)
 
@@ -99,6 +107,8 @@ if __name__ == "__main__":
     with torch.no_grad():
         n_correct = 0
         n_samples = len(test_loader.dataset)
+        av_pos_out = 0
+        abs_err = np.array([])
 
         for x_test, y_test in test_loader:
             x_test = x_test.to(device)
@@ -108,8 +118,10 @@ if __name__ == "__main__":
             predicted = torch.argmax(outputs,1)
 
             n_correct += (torch.argmax(y_test,1) == torch.argmax(outputs,1)).sum().item()
+            av_pos_out += sum((torch.argmax(y_test,1) - torch.argmax(outputs,1)))
+            abs_err = np.concatenate((abs_err,(torch.argmax(y_test,1) - torch.argmax(outputs,1)).cpu().numpy()), axis=0)
 
-        print(f'Accuracy: {n_correct/n_samples}')
+        print(f'Accuracy: {n_correct/n_samples} Average Error: {av_pos_out/n_samples}')
 
     plt.figure()
     plt.plot(tot_loss)
