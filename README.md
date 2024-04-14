@@ -26,10 +26,10 @@ This problem, while it will involve learning a bunch of new skills, will follow 
     - I am mainly doing this for myself. I will be the accuser, the defendant, the jury and the judge in this court room :)
     - Not discarding the chance for a potential future employer or colleague to view this repository. Their holding stake in this project is the visibility and understanding of the process, as opposed to the final result.
 3. Timeline
-    - *No strict timelines*. Given some early investigatory work, I estimate *between 20 and 40h* of total work. Time depends on the extent of model building and results of EDA. My knowledge/ignorance permitting, project should aim to be as comprehensive as it takes to be of a great research standard.
+    - **No strict timelines**. Given some early investigatory work, I estimate **between 20 and 40h** of total work. Time depends on the extent of model building and results of EDA. My knowledge/ignorance permitting, project should aim to be as comprehensive as it takes to be of a great research standard.
 4. Milestones
-    - *Milestone for Planning Stage*: clear understanding of the problem at hand. Visibility into available data, and best choice of the dataset. Knowledge of data pitfalls and good understanding of what is needed to complete the dataset.
-    - *Milestone for Analyse Stage*: Setup database (will require understanding the best solution to this, whether it is SQLite or PostgreSQL or any other)
-    - *Milestone for Analyse Stage*: Clean and complete dataset
-    - *Milestone for Analyse Stage*: EDA report highlighting key avenues of solving the problem
+    - **Milestone for Planning Stage**: clear understanding of the problem at hand. Visibility into available data, and best choice of the dataset. Knowledge of data pitfalls and good understanding of what is needed to complete the dataset.
+    - **Milestone for Analyse Stage**: Setup database (will require understanding the best solution to this, whether it is SQLite or PostgreSQL or any other)
+    - **Milestone for Analyse Stage**: Clean and complete dataset
+    - **Milestone for Analyse Stage**: EDA report highlighting key avenues of solving the problem
 
