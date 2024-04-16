@@ -42,5 +42,5 @@ This problem, while it will involve learning a bunch of new skills, will follow 
 
 The used dataset will be taken from [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). It consists of 14 interlinked CSV files, which screams to be put onto a relational database. But steady...
 
-First - load each file and examine its contents. Check what columns they have, how are they interlinked, what data is missing, how complete is the dataset from 1950 to 2023. Check against other sources.
+First - load each file and examine its contents. Check what columns they have, how are they interlinked, what data is missing, how complete is the dataset from 1950 to 2023. Check against other sources. Then complete and clean the dataset. Finally run some basic data description to further understand the data a little more.
 
