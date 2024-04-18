@@ -46,5 +46,9 @@ First - load each file and examine its contents. Check what columns they have, h
 
 ### ER diagram of F1 Data
 
+This shows nearly full dataset. One table relating season year to its wiki page was not added as it is unconnected to the rest of the dataset and provides no useful information for our problem. 
+
+3 tables have ben crossed out to show which data won't be used at he beginning.
+
 ![ER diagram of F1](f1_dataset/F1_ER.png)  
 
