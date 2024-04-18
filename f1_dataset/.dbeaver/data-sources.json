@@ -1,0 +1,36 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-18ef05ceb5e-31488abef5daef21": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "F1",
+			"save-password": true,
+			"configuration": {
+				"database": "/Users/jakubszypicyn/Documents/SoftwareProjects/F1 Predictor/F1 Input Data Scrape/f1_dataset/F1",
+				"url": "jdbc:sqlite:/Users/jakubszypicyn/Documents/SoftwareProjects/F1 Predictor/F1 Input Data Scrape/f1_dataset/F1",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {"sqlite_jdbc-18ef05ceb5e-31488abef5daef21":{"@properties":{"erd.diagram.state":{"serialized":"<diagram version=\"1\" name=\"empty\" time=\"202404181058\"><entities><data-source id=\"sqlite_jdbc-18ef05ceb5e-31488abef5daef21\"><entity id=\"1\" name=\"circuits\" fq-name=\"circuits\" order=\"0\" x=\"80\" y=\"966\"/><entity id=\"2\" name=\"constructor_results\" fq-name=\"constructor_results\" order=\"1\" x=\"44\" y=\"256\"/><entity id=\"3\" name=\"constructor_standings\" fq-name=\"constructor_standings\" order=\"2\" x=\"420\" y=\"780\"/><entity id=\"4\" name=\"constructors\" fq-name=\"constructors\" order=\"3\" x=\"424\" y=\"1122\"/><entity id=\"5\" name=\"driver_standings\" fq-name=\"driver_standings\" order=\"4\" x=\"844\" y=\"274\"/><entity id=\"6\" name=\"drivers\" fq-name=\"drivers\" order=\"5\" x=\"424\" y=\"0\"/><entity id=\"7\" name=\"lap_times\" fq-name=\"lap_times\" order=\"6\" x=\"48\" y=\"12\"/><entity id=\"8\" name=\"pit_stops\" fq-name=\"pit_stops\" order=\"7\" x=\"838\" y=\"20\"/><entity id=\"9\" name=\"qualifying\" fq-name=\"qualifying\" order=\"8\" x=\"850\" y=\"572\"/><entity id=\"10\" name=\"races\" fq-name=\"races\" order=\"9\" x=\"428\" y=\"342\"/><entity id=\"11\" name=\"results\" fq-name=\"results\" order=\"10\" border-width=\"3\" x=\"856\" y=\"888\"/><entity id=\"12\" name=\"sprint_results\" fq-name=\"sprint_results\" order=\"11\" x=\"48\" y=\"538\"/><entity id=\"13\" name=\"status\" fq-name=\"status\" order=\"12\" x=\"454\" y=\"1394\"/></data-source></entities><relations><relation name=\"races_circuits_FK\" fq-name=\"races.races_circuits_FK\" type=\"fk\" pk-ref=\"1\" fk-ref=\"10\"/><relation name=\"constructor_results_constructors_FK\" fq-name=\"constructor_results.constructor_results_constructors_FK\" type=\"fk\" pk-ref=\"4\" fk-ref=\"2\"/><relation name=\"constructor_standings_constructors_FK\" fq-name=\"constructor_standings.constructor_standings_constructors_FK\" type=\"fk\" pk-ref=\"4\" fk-ref=\"3\"/><relation name=\"qualifying_constructors_FK\" fq-name=\"qualifying.qualifying_constructors_FK\" type=\"fk\" pk-ref=\"4\" fk-ref=\"9\"/><relation name=\"results_constructors_FK\" fq-name=\"results.results_constructors_FK\" type=\"fk\" pk-ref=\"4\" fk-ref=\"11\"/><relation name=\"sprint_results_constructors_FK\" fq-name=\"sprint_results.sprint_results_constructors_FK\" type=\"fk\" pk-ref=\"4\" fk-ref=\"12\"/><relation name=\"driver_standings_drivers_FK\" fq-name=\"driver_standings.driver_standings_drivers_FK\" type=\"fk\" pk-ref=\"6\" fk-ref=\"5\"/><relation name=\"lap_times_drivers_FK\" fq-name=\"lap_times.lap_times_drivers_FK\" type=\"fk\" pk-ref=\"6\" fk-ref=\"7\"/><relation name=\"pit_stops_drivers_FK\" fq-name=\"pit_stops.pit_stops_drivers_FK\" type=\"fk\" pk-ref=\"6\" fk-ref=\"8\"/><relation name=\"qualifying_drivers_FK\" fq-name=\"qualifying.qualifying_drivers_FK\" type=\"fk\" pk-ref=\"6\" fk-ref=\"9\"/><relation name=\"results_drivers_FK\" fq-name=\"results.results_drivers_FK\" type=\"fk\" pk-ref=\"6\" fk-ref=\"11\"/><relation name=\"sprint_results_drivers_FK\" fq-name=\"sprint_results.sprint_results_drivers_FK\" type=\"fk\" pk-ref=\"6\" fk-ref=\"12\"/><relation name=\"constructor_results_races_FK\" fq-name=\"constructor_results.constructor_results_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"2\"/><relation name=\"constructor_standings_races_FK\" fq-name=\"constructor_standings.constructor_standings_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"3\"/><relation name=\"driver_standings_races_FK\" fq-name=\"driver_standings.driver_standings_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"5\"/><relation name=\"lap_times_races_FK\" fq-name=\"lap_times.lap_times_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"7\"/><relation name=\"pit_stops_races_FK\" fq-name=\"pit_stops.pit_stops_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"8\"/><relation name=\"qualifying_races_FK\" fq-name=\"qualifying.qualifying_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"9\"/><relation name=\"results_races_FK\" fq-name=\"results.results_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"11\"/><relation name=\"sprint_results_races_FK\" fq-name=\"sprint_results.sprint_results_races_FK\" type=\"fk\" pk-ref=\"10\" fk-ref=\"12\"/><relation name=\"results_status_FK\" fq-name=\"results.results_status_FK\" type=\"fk\" pk-ref=\"13\" fk-ref=\"11\"/><relation name=\"sprint_results_status_FK\" fq-name=\"sprint_results.sprint_results_status_FK\" type=\"fk\" pk-ref=\"13\" fk-ref=\"12\"/></relations></diagram>"}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}
