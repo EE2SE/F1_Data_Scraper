@@ -52,3 +52,9 @@ This shows nearly full dataset. One table relating season year to its wiki page 
 
 ![ER diagram of F1](f1_dataset/F1_ER.png)  
 
+### Data Clean Up and Dataset Validation
+
+Through work shown in **Data_Clean_Up** notebook we can see why we are discarding these datasets. Furthermore we have corrected what seems to be fairly important pieces of timing data and position data. 
+
+Finally, some common knowledge statistics were calculated to sense check that the data is roughly correct. While checking the entire dataset is possible, it would be tedious. Some level of trust in the dataset creator is here assumed. **Note: if the data is really important - you must check it thoroughly!** This is just some guys going round and round.
+
