@@ -48,13 +48,18 @@ First - load each file and examine its contents. Check what columns they have, h
 
 This shows nearly full dataset. One table relating season year to its wiki page was not added as it is unconnected to the rest of the dataset and provides no useful information for our problem. 
 
-3 tables have ben crossed out to show which data won't be used at he beginning.
+3 tables have been crossed out to show which data won't be used at the beginning.
 
 ![ER diagram of F1](f1_dataset/F1_ER.png)  
 
 ### Data Clean Up and Dataset Validation
 
 Through work shown in **Data_Clean_Up** notebook we can see why we are discarding these datasets. Furthermore we have corrected what seems to be fairly important pieces of timing data and position data. 
+
+'''
+res_df.loc[res_df['position'] == '\\N','position'] = -1
+res_df['position'] = res_df['position'].astype(int)
+'''
 
 Finally, some common knowledge statistics were calculated to sense check that the data is roughly correct. While checking the entire dataset is possible, it would be tedious. Some level of trust in the dataset creator is here assumed. **Note: if the data is really important - you must check it thoroughly!** This is just some guys going round and round.
 
