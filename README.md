@@ -44,3 +44,7 @@ The used dataset will be taken from [Kaggle](https://www.kaggle.com/datasets/roh
 
 First - load each file and examine its contents. Check what columns they have, how are they interlinked, what data is missing, how complete is the dataset from 1950 to 2023. Check against other sources. Then complete and clean the dataset. Finally run some basic data description to further understand the data a little more.
 
+### ER diagram of F1 Data
+
+![ER diagram of F1](f1_dataset/F1_ER.png)  
+
