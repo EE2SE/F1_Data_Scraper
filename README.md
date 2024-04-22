@@ -81,7 +81,17 @@ In any given race the most likely conversion is that of a pole sitter to take a 
 #### Insight 2
 Perhaps rather surprisingly, it it nearly as common for drivers starting from 5th down to 21st to DNF.
 
-We must address the elephant in the room and say this dataset is a little skewed. Various races across the years had different number of participants. Naturally there will be fewer data points around positions 20 and higher. 
+We must address the elephant in the room and say this dataset is a little skewed. Various races across the years had different number of participants. Naturally there will be fewer data points around positions 20 and higher.
+
+#### Insight 3
+
+These are the most likely finishing positions for each starting grid.
+
+|Grid|Finish|
+|--- |---|
+|    |   |
+|    |   |
+|    |   |
 
 **Question**
 As this is meant to model current day behaviour, do we need to restrict the dataset to races with exactly 20 drivers? Or do the other race configurations carry any useful information?
