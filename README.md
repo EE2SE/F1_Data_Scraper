@@ -89,9 +89,27 @@ These are the most likely finishing positions for each starting grid.
 
 |Grid|Finish|
 |--- |---|
-|    |   |
-|    |   |
-|    |   |
+|1  |    1|
+|2  |    1|
+|3  |    2|
+|4  |    3|
+|5  |    4|
+|6  |    4|
+|7  |    5|
+|8  |    4|
+|9  |    4|
+|10 |    5|
+|11 |    6|
+|12 |    7|
+|13 |   10|
+|14 |   10|
+|15 |    8|
+|16 |   11|
+|17 |   10|
+|18 |   10|
+|19 |  12|
+|20 |   14|
+
 
 **Question**
 As this is meant to model current day behaviour, do we need to restrict the dataset to races with exactly 20 drivers? Or do the other race configurations carry any useful information?
