@@ -50,7 +50,9 @@ This shows nearly full dataset. One table relating season year to its wiki page 
 
 3 tables have been crossed out to show which data won't be used at the beginning.
 
+<p align="center">
 <img src="f1_dataset/F1_ER.png" width="300"> 
+</p>
 
 ### Data Clean Up and Dataset Validation
 
