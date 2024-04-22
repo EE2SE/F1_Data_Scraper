@@ -69,13 +69,19 @@ Finally, some common knowledge statistics were calculated to sense check that th
 
 ### EDA
 
-Here we look for correlation within the data, some kind of dependence. Simply starting with the obvious: **what is the chance of a driver to finish in a position given his starting grid?
+Here we look for correlation within the data, some kind of dependence. Simply starting with the obvious: **what is the chance of a driver to finish in a position given his starting grid?**
 
 <p align="center">
 <img src="img/insight1_2.png" width="300"> 
 </p>
 
-In any given race the most likely conversion is that of a pole sitter to take a win. Perhaps rather surprisingly, it it nearly as common for drivers starting from 5th down to 21st to DNF.
+#### Insight 1
+In any given race the most likely conversion is that of a pole sitter to take a win. 
 
-We must address the elephant in the room and say this dataset is a little skewed. Various races across the years had different number of participants. We can see that for instance here with white spots, for which there is no real data ever recorded. For instance there has never been a race where a driver started in 9th and finished 22nd.
+#### Insight 2
+Perhaps rather surprisingly, it it nearly as common for drivers starting from 5th down to 21st to DNF.
 
+We must address the elephant in the room and say this dataset is a little skewed. Various races across the years had different number of participants. Naturally there will be fewer data points around positions 20 and higher. 
+
+**Question**
+As this is meant to model current day behaviour, do we need to restrict the dataset to races with exactly 20 drivers? Or do the other race configurations carry any useful information?
