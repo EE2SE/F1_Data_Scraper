@@ -87,28 +87,13 @@ We must address the elephant in the room and say this dataset is a little skewed
 
 These are the most likely finishing positions for each starting grid.
 
-|Grid|Finish|
-|--- |---|
-|1  |    1|
-|2  |    1|
-|3  |    2|
-|4  |    3|
-|5  |    4|
-|6  |    4|
-|7  |    5|
-|8  |    4|
-|9  |    4|
-|10 |    5|
-|11 |    6|
-|12 |    7|
-|13 |   10|
-|14 |   10|
-|15 |    8|
-|16 |   11|
-|17 |   10|
-|18 |   10|
-|19 |  12|
-|20 |   14|
+|Grid|Finish|Grid|Finish|Grid|Finish|Grid|Finish|
+|--- |---|--- |---|--- |---|--- |---|
+|1  |    1|6  |    4|11 |    6|16 |   11|
+|2  |    1|7  |    5|12 |    7|17 |   10|
+|3  |    2|8  |    4|13 |   10|18 |   10|
+|4  |    3|9  |    4|14 |   10|19 |  12|
+|5  |    4|10 |    5|15 |    8|20 |   14|
 
 
 **Question**
