@@ -50,7 +50,7 @@ This shows nearly full dataset. One table relating season year to its wiki page 
 
 3 tables have been crossed out to show which data won't be used at the beginning.
 
-![ER diagram of F1](f1_dataset/F1_ER.png)  
+![ER diagram of F1](f1_dataset/F1_ER.png | width=200)  
 
 ### Data Clean Up and Dataset Validation
 
@@ -69,7 +69,7 @@ Finally, some common knowledge statistics were calculated to sense check that th
 
 Here we look for correlation within the data, some kind of dependence. Simply starting with the obvious: **what is the chance of a driver to finish in a position given his starting grid?
 
-![Drivers all time grid to finishing position conversion likelihood](img/insight1_2.png)  
+![Drivers all time grid to finishing position conversion likelihood](img/insight1_2.png | width=100)  
 
 In any given race the most likely conversion is that of a pole sitter to take a win. Perhaps rather surprisingly, it it nearly as common for drivers starting from 5th down to 21st to DNF.
 
