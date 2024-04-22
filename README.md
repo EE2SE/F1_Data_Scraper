@@ -64,3 +64,14 @@ res_df['position'] = res_df['position'].astype(int)
 
 Finally, some common knowledge statistics were calculated to sense check that the data is roughly correct. While checking the entire dataset is possible, it would be tedious. Some level of trust in the dataset creator is here assumed. **Note: if the data is really important - you must check it thoroughly!** This is just some guys going round and round.
 
+
+### EDA
+
+Here we look for correlation within the data, some kind of dependence. Simply starting with the obvious: **what is the chance of a driver to finish in a position given his starting grid?
+
+![Drivers all time grid to finishing position conversion likelihood](img/insight1_2.png)  
+
+In any given race the most likely conversion is that of a pole sitter to take a win. Perhaps rather surprisingly, it it nearly as common for drivers starting from 5th down to 21st to DNF.
+
+We must address the elephant in the room and say this dataset is a little skewed. Various races across the years had different number of participants. We can see that for instance here with white spots, for which there is no real data ever recorded. For instance there has never been a race where a driver started in 9th and finished 22nd.
+
