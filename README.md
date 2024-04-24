@@ -88,9 +88,20 @@ We must address the elephant in the room and say this dataset is a little skewed
 These are the most likely finishing positions for each starting grid. Clearly and rather unsurprisingly, they are hugely and positively correlated. The lower you start the lower you finish.
 
 <p align="center">
-<img src="img/insight3.png" width="300"> 
+<img src="img/insight3.png" width="400"> 
 </p>
 
 
 **Question**
 As this is meant to model current day behaviour, do we need to restrict the dataset to races with exactly 20 drivers? Or do the other race configurations carry any useful information?
+**Answer**
+I think so. Looking for example at the data above, you can see the variability in the data relating to post-20 position drivers. That's probably due to lower volume of data rather than this being a true trend.
+
+#### Insight 3
+
+Championship winners on average gain places in the race. This is a somewhat lazy and inaccurate insight as more attention should be given to making sure that we compare/average likes with likes, e.g. rather than doing this by round number, we could do this by circuit. One could argue that there would be more of a relationship this way. 
+
+<p align="center">
+<img src="img/insight4.png" width="400"> 
+</p>
+
