@@ -97,9 +97,17 @@ As this is meant to model current day behaviour, do we need to restrict the data
 **Answer**
 I think so. Looking for example at the data above, you can see the variability in the data relating to post-20 position drivers. That's probably due to lower volume of data rather than this being a true trend.
 
-#### Insight 3
+#### Insight 4
 
 Championship winners on average gain places in the race. This is a somewhat lazy and inaccurate insight as more attention should be given to making sure that we compare/average likes with likes, e.g. rather than doing this by round number, we could do this by circuit. One could argue that there would be more of a relationship this way. 
+
+<p align="center">
+<img src="img/insight4.png" width="400"> 
+</p>
+
+#### Insight 4
+
+These are the tracks ranked from most to least average overtakes. Unsurprisingly, we see Monaco as one of the worst places to look for an overtake. On the other side, we have Qatar GP where we can see quite a few more passes.
 
 <p align="center">
 <img src="img/insight4.png" width="400"> 
