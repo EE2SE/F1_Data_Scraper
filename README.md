@@ -110,6 +110,6 @@ Championship winners on average gain places in the race. This is a somewhat lazy
 These are the tracks ranked from most to least average overtakes. Unsurprisingly, we see Monaco as one of the worst places to look for an overtake. On the other side, we have Qatar GP where we can see quite a few more passes.
 
 <p align="center">
-<img src="img/insight4.png" width="400"> 
+<img src="img/insight5.png" width="700"> 
 </p>
 
