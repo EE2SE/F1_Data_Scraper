@@ -115,7 +115,7 @@ These are the tracks ranked from most to least average overtakes. Unsurprisingly
 
 #### Insight 6
 
-Age doesn't matter. There seems to be uniform distribution of starting/finishing positions and the drivers' ages.
+Age doesn't matter. There seems to be uniform distribution of starting/finishing positions and the drivers' ages. Map shows the percentage. Data is normalised by age group as to avoid the skew of a perhaps there being more drivers of certain age group than others.
 
 <p align="center">
 <img src="img/insight6_1.png" width="300"> 
