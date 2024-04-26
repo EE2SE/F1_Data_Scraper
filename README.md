@@ -105,7 +105,7 @@ Championship winners on average gain places in the race. This is a somewhat lazy
 <img src="img/insight4.png" width="400"> 
 </p>
 
-#### Insight 4
+#### Insight 5
 
 These are the tracks ranked from most to least average overtakes. Unsurprisingly, we see Monaco as one of the worst places to look for an overtake. On the other side, we have Qatar GP where we can see quite a few more passes.
 
@@ -113,3 +113,11 @@ These are the tracks ranked from most to least average overtakes. Unsurprisingly
 <img src="img/insight5.png" width="700"> 
 </p>
 
+#### Insight 6
+
+Age doesn't matter. There seems to be uniform distribution of starting/finishing positions and the drivers' ages.
+
+<p align="center">
+<img src="img/insight6_1.png" width="300"> 
+<img src="img/insight6_2.png" width="300"> 
+</p>
